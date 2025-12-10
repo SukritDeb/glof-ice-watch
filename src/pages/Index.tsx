@@ -1,12 +1,78 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from 'react';
+import TopNavbar from '@/components/TopNavbar';
+import FilterSidebar from '@/components/FilterSidebar';
+import MapView from '@/components/MapView';
+import RiskLegend from '@/components/RiskLegend';
+import LakeDetailPanel from '@/components/LakeDetailPanel';
+import { GlacierLake } from '@/data/lakesData';
 
 const Index = () => {
+  const [activeTab, setActiveTab] = useState('dashboard');
+  const [selectedLake, setSelectedLake] = useState<GlacierLake | null>(null);
+  const [filters, setFilters] = useState({
+    riskLevels: ['high', 'medium', 'low'],
+    yearRange: [2018, 2024] as [number, number],
+    searchQuery: '',
+  });
+
+  const handleLakeSelect = (lake: GlacierLake) => {
+    setSelectedLake(lake);
+  };
+
+  const handleClosePanel = () => {
+    setSelectedLake(null);
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      {/* Top Navigation */}
+      <TopNavbar activeTab={activeTab} onTabChange={setActiveTab} />
+
+      {/* Main Content */}
+      <main className="pt-16 h-screen">
+        {activeTab === 'dashboard' ? (
+          <div className="relative h-full">
+            {/* Filter Sidebar */}
+            <FilterSidebar filters={filters} onFiltersChange={setFilters} />
+
+            {/* Map View */}
+            <div className="h-full ml-64 transition-all duration-300">
+              <MapView
+                filters={filters}
+                onLakeSelect={handleLakeSelect}
+                selectedLake={selectedLake}
+              />
+            </div>
+
+            {/* Risk Legend */}
+            <RiskLegend />
+
+            {/* Lake Detail Panel */}
+            <LakeDetailPanel lake={selectedLake} onClose={handleClosePanel} />
+
+            {/* Click outside to close panel */}
+            {selectedLake && (
+              <div
+                className="fixed inset-0 z-30 sm:hidden"
+                onClick={handleClosePanel}
+              />
+            )}
+          </div>
+        ) : (
+          <div className="flex items-center justify-center h-full">
+            <div className="glass-panel p-8 text-center max-w-md">
+              <h2 className="text-xl font-bold text-foreground mb-2">
+                {activeTab === 'insights' && 'Model Insights'}
+                {activeTab === 'upload' && 'Upload Data'}
+                {activeTab === 'about' && 'About GLOF Predictor'}
+              </h2>
+              <p className="text-muted-foreground">
+                This section is coming soon. The dashboard view provides full glacier lake monitoring and risk assessment.
+              </p>
+            </div>
+          </div>
+        )}
+      </main>
     </div>
   );
 };
