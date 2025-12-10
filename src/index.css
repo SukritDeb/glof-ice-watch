@@ -2,95 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Glacier Dark Theme - Deep Navy Base */
+    --background: 220 40% 7%;
+    --foreground: 210 40% 96%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 220 35% 10%;
+    --card-foreground: 210 40% 96%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 35% 12%;
+    --popover-foreground: 210 40% 96%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Ice Blue Primary */
+    --primary: 195 100% 50%;
+    --primary-foreground: 220 40% 7%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Frosted Secondary */
+    --secondary: 220 30% 15%;
+    --secondary-foreground: 210 40% 90%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 25% 18%;
+    --muted-foreground: 215 20% 55%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Ice Accent */
+    --accent: 195 80% 60%;
+    --accent-foreground: 220 40% 7%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Risk Colors */
+    --destructive: 4 90% 58%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --warning: 32 95% 50%;
+    --warning-foreground: 0 0% 100%;
 
-    --radius: 0.5rem;
+    --safe: 195 100% 50%;
+    --safe-foreground: 220 40% 7%;
 
-    --sidebar-background: 0 0% 98%;
+    --border: 220 25% 18%;
+    --input: 220 25% 15%;
+    --ring: 195 100% 50%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    --radius: 0.75rem;
 
-    --sidebar-primary: 240 5.9% 10%;
+    /* Glacier Gradients */
+    --gradient-ice: linear-gradient(135deg, hsl(195 100% 80%) 0%, hsl(210 100% 95%) 100%);
+    --gradient-frost: linear-gradient(180deg, hsl(220 30% 15% / 0.8) 0%, hsl(220 35% 10% / 0.95) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(195 100% 50% / 0.15) 0%, transparent 70%);
+    --gradient-danger: radial-gradient(ellipse at center, hsl(4 90% 58% / 0.3) 0%, transparent 70%);
 
-    --sidebar-primary-foreground: 0 0% 98%;
+    /* Glass Effect */
+    --glass-bg: hsl(220 30% 12% / 0.7);
+    --glass-border: hsl(195 50% 50% / 0.2);
+    --glass-shadow: 0 8px 32px hsl(220 40% 5% / 0.5);
 
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 220 35% 8%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 195 100% 50%;
+    --sidebar-primary-foreground: 220 40% 7%;
+    --sidebar-accent: 220 30% 15%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 220 25% 18%;
+    --sidebar-ring: 195 100% 50%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 220 40% 7%;
+    --foreground: 210 40% 96%;
   }
 }
 
@@ -100,6 +80,113 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Outfit', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', system-ui, sans-serif;
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Panel */
+  .glass-panel {
+    @apply bg-card/70 backdrop-blur-xl border border-glass rounded-xl;
+    box-shadow: var(--glass-shadow);
+  }
+
+  /* Risk Badges */
+  .risk-high {
+    @apply bg-destructive/20 text-destructive border border-destructive/30;
+  }
+
+  .risk-medium {
+    @apply bg-warning/20 text-warning border border-warning/30;
+  }
+
+  .risk-low {
+    @apply bg-safe/20 text-safe border border-safe/30;
+  }
+
+  /* Pulsing Glow for High Risk */
+  .pulse-danger {
+    animation: pulse-danger 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-danger {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(4 90% 58% / 0.4), 0 0 40px hsl(4 90% 58% / 0.2);
+    }
+    50% {
+      box-shadow: 0 0 30px hsl(4 90% 58% / 0.6), 0 0 60px hsl(4 90% 58% / 0.3);
+    }
+  }
+
+  /* Ice Glow */
+  .glow-ice {
+    box-shadow: 0 0 20px hsl(195 100% 50% / 0.3), 0 0 40px hsl(195 100% 50% / 0.1);
+  }
+
+  /* Smooth slide animation */
+  .slide-in-right {
+    animation: slideInRight 0.3s ease-out;
+  }
+
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* Map marker pulse */
+  .marker-pulse {
+    animation: markerPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes markerPulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.7;
+    }
+  }
+}
+
+@layer utilities {
+  .text-gradient-ice {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(195 100% 70%), hsl(210 100% 90%));
+  }
+
+  .border-glass {
+    border-color: hsl(195 50% 50% / 0.2);
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(220 25% 25%) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(220 25% 25%);
+    border-radius: 3px;
   }
 }
