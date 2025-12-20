@@ -4,18 +4,17 @@ import FilterSidebar from '@/components/FilterSidebar';
 import MapView from '@/components/MapView';
 import RiskLegend from '@/components/RiskLegend';
 import LakeDetailPanel from '@/components/LakeDetailPanel';
-import { GlacierLake } from '@/data/lakesData';
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
-  const [selectedLake, setSelectedLake] = useState<GlacierLake | null>(null);
+  const [selectedLake, setSelectedLake] = useState(null);
   const [filters, setFilters] = useState({
     riskLevels: ['high', 'medium', 'low'],
-    yearRange: [2018, 2024] as [number, number],
+    yearRange: [2018, 2024],
     searchQuery: '',
   });
 
-  const handleLakeSelect = (lake: GlacierLake) => {
+  const handleLakeSelect = (lake) => {
     setSelectedLake(lake);
   };
 

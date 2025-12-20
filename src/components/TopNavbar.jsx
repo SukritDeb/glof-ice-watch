@@ -1,12 +1,7 @@
 import { Mountain, LayoutDashboard, Brain, Upload, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-interface TopNavbarProps {
-  activeTab: string;
-  onTabChange: (tab: string) => void;
-}
-
-const TopNavbar = ({ activeTab, onTabChange }: TopNavbarProps) => {
+const TopNavbar = ({ activeTab, onTabChange }) => {
   const navItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'insights', label: 'Model Insights', icon: Brain },
