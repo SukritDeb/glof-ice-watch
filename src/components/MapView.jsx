@@ -1,22 +1,12 @@
 import { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { GlacierLake, glacierLakes, getRiskColor } from '@/data/lakesData';
+import { glacierLakes, getRiskColor } from '@/data/lakesData';
 
-interface MapViewProps {
-  filters: {
-    riskLevels: string[];
-    yearRange: [number, number];
-    searchQuery: string;
-  };
-  onLakeSelect: (lake: GlacierLake) => void;
-  selectedLake: GlacierLake | null;
-}
-
-const MapView = ({ filters, onLakeSelect, selectedLake }: MapViewProps) => {
-  const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<L.Map | null>(null);
-  const markersRef = useRef<L.CircleMarker[]>([]);
+const MapView = ({ filters, onLakeSelect, selectedLake }) => {
+  const mapContainer = useRef(null);
+  const map = useRef(null);
+  const markersRef = useRef([]);
 
   const filteredLakes = glacierLakes.filter((lake) => {
     if (!filters.riskLevels.includes(lake.riskLevel)) return false;
@@ -76,7 +66,7 @@ const MapView = ({ filters, onLakeSelect, selectedLake }: MapViewProps) => {
         opacity: 1,
         fillOpacity: 0.8,
         className: isHighRisk ? 'pulse-marker' : '',
-      }).addTo(map.current!);
+      }).addTo(map.current);
 
       // Add pulsing effect for high-risk lakes
       if (isHighRisk) {
@@ -88,7 +78,7 @@ const MapView = ({ filters, onLakeSelect, selectedLake }: MapViewProps) => {
           opacity: 0.4,
           fillOpacity: 0.2,
           className: 'pulse-ring',
-        }).addTo(map.current!);
+        }).addTo(map.current);
         markersRef.current.push(pulseMarker);
       }
 

@@ -1,24 +1,19 @@
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell, Tooltip } from 'recharts';
-import { ModelFeature } from '@/data/lakesData';
 
-interface ModelExplanationProps {
-  features: ModelFeature[];
-}
-
-const ModelExplanation = ({ features }: ModelExplanationProps) => {
+const ModelExplanation = ({ features }) => {
   const chartData = features.map((f) => ({
     name: f.name,
     contribution: f.contribution * 100,
     description: f.description,
   }));
 
-  const getBarColor = (contribution: number) => {
+  const getBarColor = (contribution) => {
     if (contribution >= 30) return 'hsl(4, 90%, 58%)';
     if (contribution >= 20) return 'hsl(32, 95%, 50%)';
     return 'hsl(195, 100%, 50%)';
   };
 
-  const CustomTooltip = ({ active, payload }: any) => {
+  const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       return (

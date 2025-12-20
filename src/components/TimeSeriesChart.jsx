@@ -1,18 +1,12 @@
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, Area, AreaChart } from 'recharts';
-import { TimeSeriesPoint } from '@/data/lakesData';
+import { XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from 'recharts';
 
-interface TimeSeriesChartProps {
-  data: TimeSeriesPoint[];
-  title: string;
-}
-
-const TimeSeriesChart = ({ data, title }: TimeSeriesChartProps) => {
-  const CustomTooltip = ({ active, payload, label }: any) => {
+const TimeSeriesChart = ({ data, title }) => {
+  const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
         <div className="glass-panel p-3 border border-glass">
           <p className="text-sm font-medium text-foreground mb-2">{label}</p>
-          {payload.map((entry: any, index: number) => (
+          {payload.map((entry, index) => (
             <div key={index} className="flex items-center gap-2 text-xs">
               <div
                 className="w-2 h-2 rounded-full"

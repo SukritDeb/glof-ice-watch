@@ -1,40 +1,4 @@
-export type RiskLevel = 'high' | 'medium' | 'low';
-
-export interface GlofEvent {
-  date: string;
-  magnitude: string;
-  impact: string;
-  source: string;
-}
-
-export interface TimeSeriesPoint {
-  date: string;
-  area: number;
-  ndwi: number;
-  precipitation?: number;
-}
-
-export interface ModelFeature {
-  name: string;
-  contribution: number;
-  description: string;
-}
-
-export interface GlacierLake {
-  id: string;
-  name: string;
-  coordinates: [number, number];
-  elevation: number;
-  area: number;
-  riskScore: number;
-  riskLevel: RiskLevel;
-  history: GlofEvent[];
-  timeSeries: TimeSeriesPoint[];
-  modelFeatures: ModelFeature[];
-  lastUpdated: string;
-}
-
-export const glacierLakes: GlacierLake[] = [
+export const glacierLakes = [
   {
     id: 'GL-001',
     name: 'Imja Tsho',
@@ -229,18 +193,20 @@ export const glacierLakes: GlacierLake[] = [
   },
 ];
 
-export const getRiskColor = (level: RiskLevel): string => {
+export const getRiskColor = (level) => {
   switch (level) {
     case 'high': return '#FF3B30';
     case 'medium': return '#FF9500';
     case 'low': return '#00C2FF';
+    default: return '#00C2FF';
   }
 };
 
-export const getRiskLabel = (level: RiskLevel): string => {
+export const getRiskLabel = (level) => {
   switch (level) {
     case 'high': return 'High Risk';
     case 'medium': return 'Medium Risk';
     case 'low': return 'Low Risk';
+    default: return 'Unknown';
   }
 };

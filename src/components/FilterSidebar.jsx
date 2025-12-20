@@ -5,20 +5,7 @@ import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 
-interface FilterSidebarProps {
-  filters: {
-    riskLevels: string[];
-    yearRange: [number, number];
-    searchQuery: string;
-  };
-  onFiltersChange: (filters: {
-    riskLevels: string[];
-    yearRange: [number, number];
-    searchQuery: string;
-  }) => void;
-}
-
-const FilterSidebar = ({ filters, onFiltersChange }: FilterSidebarProps) => {
+const FilterSidebar = ({ filters, onFiltersChange }) => {
   const [collapsed, setCollapsed] = useState(false);
 
   const riskOptions = [
@@ -27,18 +14,18 @@ const FilterSidebar = ({ filters, onFiltersChange }: FilterSidebarProps) => {
     { id: 'low', label: 'Low Risk', color: 'bg-safe' },
   ];
 
-  const handleRiskToggle = (riskId: string) => {
+  const handleRiskToggle = (riskId) => {
     const newRiskLevels = filters.riskLevels.includes(riskId)
       ? filters.riskLevels.filter((r) => r !== riskId)
       : [...filters.riskLevels, riskId];
     onFiltersChange({ ...filters, riskLevels: newRiskLevels });
   };
 
-  const handleYearChange = (value: number[]) => {
+  const handleYearChange = (value) => {
     onFiltersChange({ ...filters, yearRange: [value[0], value[1]] });
   };
 
-  const handleSearchChange = (value: string) => {
+  const handleSearchChange = (value) => {
     onFiltersChange({ ...filters, searchQuery: value });
   };
 
