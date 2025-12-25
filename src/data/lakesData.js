@@ -1,30 +1,3 @@
-// User roles for role-based UI
-export const USER_ROLES = {
-  PUBLIC: 'public',
-  OFFICIAL: 'official',
-  ADMIN: 'admin',
-};
-
-// Verification statuses
-export const VERIFICATION_STATUS = {
-  VERIFIED: 'verified',
-  PENDING: 'pending',
-  UNVERIFIED: 'unverified',
-};
-
-// Evidence types
-export const EVIDENCE_TYPES = {
-  IMAGE: 'Satellite Imagery',
-  FIELD: 'Field Survey',
-  HISTORICAL: 'Historical Records',
-};
-
-// Report origins
-export const REPORT_ORIGINS = {
-  CITIZEN: 'Citizen Report',
-  OFFICIAL: 'Official Survey',
-};
-
 export const glacierLakes = [
   {
     id: 'GL-001',
@@ -34,27 +7,6 @@ export const glacierLakes = [
     area: 1.28,
     riskScore: 0.87,
     riskLevel: 'high',
-    confidence: 0.92,
-    verificationStatus: VERIFICATION_STATUS.VERIFIED,
-    lastVerifiedDate: '2024-02-20',
-    verifiedBy: 'Department of Hydrology and Meteorology',
-    evidenceUsed: [EVIDENCE_TYPES.IMAGE, EVIDENCE_TYPES.FIELD],
-    reportOrigin: REPORT_ORIGINS.OFFICIAL,
-    riskReasons: [
-      'Meltwater presence detected',
-      'Rapid lake expansion (2.3% annually)',
-      'Ice-dam instability observed',
-      'Historical GLOF proximity',
-    ],
-    riskTrend: [
-      { year: 2018, risk: 0.72 },
-      { year: 2019, risk: 0.75 },
-      { year: 2020, risk: 0.78 },
-      { year: 2021, risk: 0.81 },
-      { year: 2022, risk: 0.84 },
-      { year: 2023, risk: 0.86 },
-      { year: 2024, risk: 0.87 },
-    ],
     history: [
       { date: '2016-04-25', magnitude: 'Major', impact: 'Significant downstream flooding, 12 bridges destroyed', source: 'ICIMOD Report 2016' },
       { date: '2009-08-14', magnitude: 'Minor', impact: 'Localized flooding in valley', source: 'Nepal Geological Survey' },
@@ -84,27 +36,6 @@ export const glacierLakes = [
     area: 1.54,
     riskScore: 0.92,
     riskLevel: 'high',
-    confidence: 0.95,
-    verificationStatus: VERIFICATION_STATUS.VERIFIED,
-    lastVerifiedDate: '2024-03-01',
-    verifiedBy: 'Nepal Geological Survey',
-    evidenceUsed: [EVIDENCE_TYPES.IMAGE, EVIDENCE_TYPES.FIELD, EVIDENCE_TYPES.HISTORICAL],
-    reportOrigin: REPORT_ORIGINS.OFFICIAL,
-    riskReasons: [
-      'Critical freeboard level (2.3m)',
-      'Massive water storage (75M m³)',
-      'Ice core thermal erosion',
-      'Historical catastrophic GLOF',
-    ],
-    riskTrend: [
-      { year: 2018, risk: 0.85 },
-      { year: 2019, risk: 0.87 },
-      { year: 2020, risk: 0.88 },
-      { year: 2021, risk: 0.89 },
-      { year: 2022, risk: 0.90 },
-      { year: 2023, risk: 0.91 },
-      { year: 2024, risk: 0.92 },
-    ],
     history: [
       { date: '1985-08-04', magnitude: 'Catastrophic', impact: 'Major GLOF event, destroyed multiple villages', source: 'WECS Report 1985' },
       { date: '1998-07-12', magnitude: 'Moderate', impact: 'Controlled release, minor damage', source: 'DHM Nepal' },
@@ -134,26 +65,6 @@ export const glacierLakes = [
     area: 0.89,
     riskScore: 0.64,
     riskLevel: 'medium',
-    confidence: 0.78,
-    verificationStatus: VERIFICATION_STATUS.PENDING,
-    lastVerifiedDate: '2023-11-15',
-    verifiedBy: 'ICIMOD',
-    evidenceUsed: [EVIDENCE_TYPES.IMAGE],
-    reportOrigin: REPORT_ORIGINS.CITIZEN,
-    riskReasons: [
-      'Moderate lake expansion',
-      'Partially blocked outlet',
-      'Increasing monsoon intensity',
-    ],
-    riskTrend: [
-      { year: 2018, risk: 0.55 },
-      { year: 2019, risk: 0.57 },
-      { year: 2020, risk: 0.59 },
-      { year: 2021, risk: 0.60 },
-      { year: 2022, risk: 0.62 },
-      { year: 2023, risk: 0.63 },
-      { year: 2024, risk: 0.64 },
-    ],
     history: [],
     timeSeries: [
       { date: '2018-01', area: 0.78, ndwi: 0.38, precipitation: 42 },
@@ -180,26 +91,6 @@ export const glacierLakes = [
     area: 0.62,
     riskScore: 0.58,
     riskLevel: 'medium',
-    confidence: 0.82,
-    verificationStatus: VERIFICATION_STATUS.VERIFIED,
-    lastVerifiedDate: '2024-01-10',
-    verifiedBy: 'Department of Hydrology and Meteorology',
-    evidenceUsed: [EVIDENCE_TYPES.HISTORICAL, EVIDENCE_TYPES.IMAGE],
-    reportOrigin: REPORT_ORIGINS.OFFICIAL,
-    riskReasons: [
-      'Previous major GLOF event',
-      'Glacier recession ongoing',
-      'Partial dam remediation only',
-    ],
-    riskTrend: [
-      { year: 2018, risk: 0.65 },
-      { year: 2019, risk: 0.63 },
-      { year: 2020, risk: 0.61 },
-      { year: 2021, risk: 0.60 },
-      { year: 2022, risk: 0.59 },
-      { year: 2023, risk: 0.58 },
-      { year: 2024, risk: 0.58 },
-    ],
     history: [
       { date: '1985-08-04', magnitude: 'Major', impact: 'GLOF destroyed Namche hydropower plant', source: 'ICIMOD Database' },
     ],
@@ -228,25 +119,6 @@ export const glacierLakes = [
     area: 0.45,
     riskScore: 0.31,
     riskLevel: 'low',
-    confidence: 0.88,
-    verificationStatus: VERIFICATION_STATUS.VERIFIED,
-    lastVerifiedDate: '2024-02-05',
-    verifiedBy: 'Nepal Geological Survey',
-    evidenceUsed: [EVIDENCE_TYPES.IMAGE, EVIDENCE_TYPES.FIELD],
-    reportOrigin: REPORT_ORIGINS.OFFICIAL,
-    riskReasons: [
-      'Minimal area change',
-      'Well-consolidated moraine dam',
-    ],
-    riskTrend: [
-      { year: 2018, risk: 0.32 },
-      { year: 2019, risk: 0.32 },
-      { year: 2020, risk: 0.31 },
-      { year: 2021, risk: 0.31 },
-      { year: 2022, risk: 0.31 },
-      { year: 2023, risk: 0.31 },
-      { year: 2024, risk: 0.31 },
-    ],
     history: [],
     timeSeries: [
       { date: '2018-01', area: 0.42, ndwi: 0.32, precipitation: 35 },
@@ -273,25 +145,6 @@ export const glacierLakes = [
     area: 0.38,
     riskScore: 0.24,
     riskLevel: 'low',
-    confidence: 0.85,
-    verificationStatus: VERIFICATION_STATUS.VERIFIED,
-    lastVerifiedDate: '2024-01-25',
-    verifiedBy: 'ICIMOD',
-    evidenceUsed: [EVIDENCE_TYPES.IMAGE],
-    reportOrigin: REPORT_ORIGINS.OFFICIAL,
-    riskReasons: [
-      'Limited water storage',
-      'Bedrock-stabilized basin',
-    ],
-    riskTrend: [
-      { year: 2018, risk: 0.25 },
-      { year: 2019, risk: 0.25 },
-      { year: 2020, risk: 0.24 },
-      { year: 2021, risk: 0.24 },
-      { year: 2022, risk: 0.24 },
-      { year: 2023, risk: 0.24 },
-      { year: 2024, risk: 0.24 },
-    ],
     history: [],
     timeSeries: [
       { date: '2018-01', area: 0.35, ndwi: 0.28, precipitation: 32 },
@@ -318,27 +171,6 @@ export const glacierLakes = [
     area: 0.72,
     riskScore: 0.78,
     riskLevel: 'high',
-    confidence: 0.71,
-    verificationStatus: VERIFICATION_STATUS.PENDING,
-    lastVerifiedDate: '2023-09-20',
-    verifiedBy: 'Department of Hydrology and Meteorology',
-    evidenceUsed: [EVIDENCE_TYPES.IMAGE],
-    reportOrigin: REPORT_ORIGINS.CITIZEN,
-    riskReasons: [
-      'Rapid expansion (3.1% annually)',
-      'Ice-cored moraine weakness',
-      'Monsoon intensification',
-      'Steep catchment runoff',
-    ],
-    riskTrend: [
-      { year: 2018, risk: 0.58 },
-      { year: 2019, risk: 0.62 },
-      { year: 2020, risk: 0.66 },
-      { year: 2021, risk: 0.70 },
-      { year: 2022, risk: 0.74 },
-      { year: 2023, risk: 0.76 },
-      { year: 2024, risk: 0.78 },
-    ],
     history: [
       { date: '2017-05-19', magnitude: 'Moderate', impact: 'Flash flooding in Manang district', source: 'DHM Nepal' },
     ],
@@ -377,17 +209,4 @@ export const getRiskLabel = (level) => {
     case 'low': return 'Low Risk';
     default: return 'Unknown';
   }
-};
-
-export const getConfidenceLabel = (confidence) => {
-  if (confidence >= 0.85) return 'High';
-  if (confidence >= 0.70) return 'Medium';
-  return 'Low';
-};
-
-export const getDaysSinceUpdate = (dateString) => {
-  const updated = new Date(dateString);
-  const now = new Date();
-  const diffTime = Math.abs(now - updated);
-  return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 };

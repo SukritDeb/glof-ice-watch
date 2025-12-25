@@ -4,9 +4,6 @@ import FilterSidebar from '@/components/FilterSidebar';
 import MapView from '@/components/MapView';
 import RiskLegend from '@/components/RiskLegend';
 import LakeDetailPanel from '@/components/LakeDetailPanel';
-import AdvisoryDisclaimer from '@/components/AdvisoryDisclaimer';
-import { UnverifiedToggle } from '@/components/RoleAwareActions';
-import { USER_ROLES } from '@/data/lakesData';
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -16,11 +13,6 @@ const Index = () => {
     yearRange: [2018, 2024],
     searchQuery: '',
   });
-
-  // For demo purposes - in production this would come from auth
-  // Change to USER_ROLES.OFFICIAL or USER_ROLES.ADMIN to test different views
-  const [userRole] = useState(USER_ROLES.OFFICIAL);
-  const [showUnverified, setShowUnverified] = useState(false);
 
   const handleLakeSelect = (lake) => {
     setSelectedLake(lake);
@@ -42,40 +34,20 @@ const Index = () => {
             {/* Filter Sidebar */}
             <FilterSidebar filters={filters} onFiltersChange={setFilters} />
 
-            {/* Unverified Toggle - For Officials Only */}
-            {userRole !== USER_ROLES.PUBLIC && (
-              <div className="absolute top-4 left-[calc(256px+1rem)] z-20">
-                <UnverifiedToggle
-                  userRole={userRole}
-                  showUnverified={showUnverified}
-                  onToggle={setShowUnverified}
-                />
-              </div>
-            )}
-
             {/* Map View */}
             <div className="h-full ml-64 transition-all duration-300">
               <MapView
                 filters={filters}
                 onLakeSelect={handleLakeSelect}
                 selectedLake={selectedLake}
-                userRole={userRole}
-                showUnverified={showUnverified}
               />
             </div>
 
             {/* Risk Legend */}
             <RiskLegend />
 
-            {/* Advisory Disclaimer */}
-            <AdvisoryDisclaimer />
-
             {/* Lake Detail Panel */}
-            <LakeDetailPanel 
-              lake={selectedLake} 
-              onClose={handleClosePanel}
-              userRole={userRole}
-            />
+            <LakeDetailPanel lake={selectedLake} onClose={handleClosePanel} />
 
             {/* Click outside to close panel */}
             {selectedLake && (
