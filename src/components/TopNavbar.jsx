@@ -1,5 +1,6 @@
 import { Mountain, LayoutDashboard, Brain, Upload, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import UserPanel from './UserPanel';
 
 const TopNavbar = ({ activeTab, onTabChange }) => {
   const navItems = [
@@ -8,6 +9,9 @@ const TopNavbar = ({ activeTab, onTabChange }) => {
     { id: 'upload', label: 'Upload Data', icon: Upload },
     { id: 'about', label: 'About', icon: Info },
   ];
+
+  // Mock: set to false to see the "Register as Government Official" button
+  const isLoggedIn = true;
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-glass">
@@ -54,12 +58,13 @@ const TopNavbar = ({ activeTab, onTabChange }) => {
           })}
         </nav>
 
-        {/* Status Indicator */}
-        <div className="hidden lg:flex items-center gap-3">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/50 border border-border">
+        {/* Right Side: Status + User Panel */}
+        <div className="flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/50 border border-border">
             <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
             <span className="text-xs text-muted-foreground">Live Monitoring</span>
           </div>
+          <UserPanel isLoggedIn={isLoggedIn} />
         </div>
       </div>
     </header>
