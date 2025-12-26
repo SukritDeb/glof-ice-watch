@@ -69,7 +69,10 @@ const TopNavbar = ({ activeTab, onTabChange }) => {
 
             {/* User Avatar Button */}
             <button
-              onClick={() => setIsUserPanelOpen(true)}
+              onClick={() => {
+                console.log('User avatar clicked, opening panel');
+                setIsUserPanelOpen(true);
+              }}
               className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-primary/30 hover:border-primary/60 transition-colors cursor-pointer glow-ice"
             >
               <img 

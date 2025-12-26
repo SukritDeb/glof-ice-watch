@@ -15,18 +15,20 @@ const MOCK_OFFICIAL = {
 const UserPanel = ({ isOpen, onClose }) => {
   const [isAuthenticated] = useState(true); // Mock auth state
 
+  console.log('UserPanel render, isOpen:', isOpen);
+
   if (!isOpen) return null;
 
   return (
     <>
       {/* Backdrop */}
       <div 
-        className="fixed inset-0 bg-background/60 backdrop-blur-sm z-50"
+        className="fixed inset-0 bg-background/60 backdrop-blur-sm z-[100]"
         onClick={onClose}
       />
       
       {/* Panel */}
-      <div className="fixed top-0 right-0 h-full w-80 sm:w-96 z-50 slide-in-right">
+      <div className="fixed top-0 right-0 h-full w-80 sm:w-96 z-[100] slide-in-right">
         <div className="h-full glass-panel border-l border-glass flex flex-col">
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-border">
